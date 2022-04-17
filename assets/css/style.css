@@ -75,7 +75,7 @@ h6 {
   font-size: inherit;
 }
 
-@-webkit-keyframes opacity-bg {
+@-webkit-keyframes opacity-remove {
   0% {
     opacity: 0;
   }
@@ -84,7 +84,7 @@ h6 {
   }
 }
 
-@keyframes opacity-bg {
+@keyframes opacity-remove {
   0% {
     opacity: 0;
   }
@@ -234,12 +234,16 @@ body::after {
   background-image: url("../img/cross.png");
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-animation: opacity-bg .7s ease-in-out 0s 1 normal forwards;
-          animation: opacity-bg .7s ease-in-out 0s 1 normal forwards;
+  -webkit-animation: opacity-remove .7s ease-in-out 0s 1 normal forwards;
+          animation: opacity-remove .7s ease-in-out 0s 1 normal forwards;
   opacity: 0;
 }
 
-@keyframes opacity-bg {
+.display__none {
+  display: none;
+}
+
+@keyframes opacity-remove {
   0% {
     opacity: 0;
   }
@@ -328,6 +332,8 @@ body::after {
 
 .section--board {
   height: 100vh;
+  -webkit-animation: opacity-title 1.7s ease-out 0s 1 normal forwards;
+          animation: opacity-title 1.7s ease-out 0s 1 normal forwards;
 }
 
 .title {
@@ -404,35 +410,18 @@ body::after {
 }
 
 .game__title {
-  margin-bottom: 40px;
+  margin-bottom: 1.2em;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 3em;
   line-height: 38px;
   text-align: center;
-}
-
-.game__title--user {
   color: white;
 }
 
-.game__title--computer {
+.game__title--red {
   color: #C75F5F;
-}
-
-.game__background {
-  position: absolute;
-  top: 10%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 500px;
-  min-width: 423px;
-  height: 100%;
-  max-height: 500px;
-  min-height: 423px;
-  opacity: .6;
 }
 
 .game__board {
@@ -460,9 +449,9 @@ body::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  cursor: pointer;
   -webkit-transition: background-color .2s ease-out;
   transition: background-color .2s ease-out;
+  background-color: transparent;
 }
 
 .cell--hover:hover {
@@ -517,22 +506,22 @@ body::after {
   border-top: 1px solid #818181;
 }
 
-#cross {
+.icon-cross {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 7em;
+  font-size: 8.2em;
   color: #fff;
-  -webkit-transform: rotate(45deg) translate(-7%, 18%);
-          transform: rotate(45deg) translate(-7%, 18%);
+  -webkit-transform: rotate(45deg) translate(-7%, 19%);
+          transform: rotate(45deg) translate(-7%, 19%);
 }
 
-#circle {
+.icon-circle {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 6em;
+  font-size: 7.2em;
   color: #765656;
-  -webkit-transform: translate(-23%, 19%);
-          transform: translate(-23%, 19%);
+  -webkit-transform: translate(-22%, 19%);
+          transform: translate(-22%, 19%);
 }
