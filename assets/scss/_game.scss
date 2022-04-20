@@ -14,9 +14,13 @@
 
 .game {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     &__title {
-        margin-bottom: 1.2em;
+        margin-bottom: 1.7em;
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
@@ -39,12 +43,42 @@
         max-height: 435px;
         min-height: 423px;
 
-
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
 
         color: #fff;
     }
+
+    &__button {
+        margin-top: 2.8em;
+        padding: 1rem 3rem;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6em;
+        line-height: 23px;
+        color: rgba(255, 255, 255, 0.48);
+
+        background-color:  transparent;
+        border: 1px solid transparent;
+        border-radius: .5em;
+        cursor: pointer;
+        transition: background-color .1s linear, border .1s linear, color .1s linear;
+
+        &:hover {
+            border: 1px solid #ffffff7a;
+            color: #fff;
+            // color: #C75F5F;
+        }
+        
+        
+        &:active {
+            background-color: #39393938;
+        }
+        
+    }
+
+
 }
 
 
@@ -67,6 +101,10 @@
 
     &--lose {
         background-color: #c75f5f38;
+    }
+
+    &--error {
+        animation: error .6s ease-in-out 0s 1 normal forwards;
     }
 
     &>span {
@@ -131,7 +169,7 @@
     top: 0;
     right: 0;
     font-size: 7.2em;
-    color: #765656; 
+    color: #C75F5F;
 
     // color: #c75f5fcd;
     transform: translate(-22%, 19%);

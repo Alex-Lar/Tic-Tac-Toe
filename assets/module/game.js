@@ -1,4 +1,4 @@
-export { pushToBoard, isWinner, switchToNum };
+export { pushToBoard, isWinner, switchToNum, computerMove, checkPosition };
 
 class Transfer {
     constructor(storage) {
@@ -61,6 +61,63 @@ function pushToBoard(move, isUser) {
             break;
     }
 }
+
+function computerMove() {
+    let compCell;
+    let isTaken;
+
+    do {
+        compCell = Math.floor(Math.random() * 9);
+        isTaken = checkPosition(compCell + 1);
+    } while (!isTaken);
+    
+    pushToBoard(compCell + 1, false);
+
+    return compCell;
+}
+
+
+function checkPosition(pos) {
+    if (pos === 1) {
+        if (gameBoard[0][0] === ' ') {
+            return true;
+        }
+    } else if (pos === 2) {
+        if (gameBoard[0][1] === ' ') {
+            return true;
+        }
+    } else if (pos === 3) {
+        if (gameBoard[0][2] === ' ') {
+            return true;
+        }
+    } else if (pos === 4) {
+        if (gameBoard[1][0] === ' ') {
+            return true;
+        }
+    } else if (pos === 5) {
+        if (gameBoard[1][1] === ' ') {
+            return true;
+        }
+    } else if (pos === 6) {
+        if (gameBoard[1][2] === ' ') {
+            return true;
+        }
+    } else if (pos === 7) {
+        if (gameBoard[2][0] === ' ') {
+            return true;
+        }
+    } else if (pos === 8) {
+        if (gameBoard[2][1] === ' ') {
+            return true;
+        }
+    } else if (pos === 9) {
+        if (gameBoard[2][2] === ' ') {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 function switchToNum() {
     const cellNums = [];

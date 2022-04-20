@@ -213,6 +213,24 @@ h6 {
   }
 }
 
+@-webkit-keyframes error {
+  0% {
+    background-color: #E05755;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes error {
+  0% {
+    background-color: #E05755;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
 body {
   position: relative;
   width: 100vw;
@@ -312,6 +330,15 @@ body::after {
   }
 }
 
+@keyframes error {
+  0% {
+    background-color: #E05755;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
 .section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -327,7 +354,7 @@ body::after {
       -ms-flex-align: center;
           align-items: center;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
 }
 
 .section--board {
@@ -362,7 +389,6 @@ body::after {
 }
 
 .button {
-  position: relative;
   padding: 1.3rem 2.3rem;
   font-family: 'Roboto';
   font-style: normal;
@@ -407,10 +433,23 @@ body::after {
 
 .game {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .game__title {
-  margin-bottom: 1.2em;
+  margin-bottom: 1.7em;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -436,6 +475,31 @@ body::after {
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
   color: #fff;
+}
+
+.game__button {
+  margin-top: 2.8em;
+  padding: 1rem 3rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6em;
+  line-height: 23px;
+  color: rgba(255, 255, 255, 0.48);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: .5em;
+  cursor: pointer;
+  -webkit-transition: background-color .1s linear, border .1s linear, color .1s linear;
+  transition: background-color .1s linear, border .1s linear, color .1s linear;
+}
+
+.game__button:hover {
+  border: 1px solid #ffffff7a;
+  color: #fff;
+}
+
+.game__button:active {
+  background-color: #39393938;
 }
 
 .cell {
@@ -464,6 +528,11 @@ body::after {
 
 .cell--lose {
   background-color: #c75f5f38;
+}
+
+.cell--error {
+  -webkit-animation: error .6s ease-in-out 0s 1 normal forwards;
+          animation: error .6s ease-in-out 0s 1 normal forwards;
 }
 
 .cell > span {
@@ -521,7 +590,7 @@ body::after {
   top: 0;
   right: 0;
   font-size: 7.2em;
-  color: #765656;
+  color: #C75F5F;
   -webkit-transform: translate(-22%, 19%);
           transform: translate(-22%, 19%);
 }
