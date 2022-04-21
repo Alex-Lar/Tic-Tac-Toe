@@ -7,12 +7,13 @@ import {
 } from './assets/module/game.js';
 
 function main() {
-    let gameTitle = document.querySelector(".game__title");
     let startGame = document.querySelector("#start-btn");
     let cellButtons = document.querySelectorAll(".cell");
+    let userTitle = document.querySelector("#user-name");
+    let compTitle = document.querySelector("#bot-name");
     let isTaken;
 
-    startGame.addEventListener('click', setGameField);
+    startGame.addEventListener('click', setGameField); 
 
     for (const button of cellButtons) {
         button.addEventListener('click', function () {
@@ -53,9 +54,10 @@ function main() {
         }
 
         if (!isUserWin) {
+            changeTitleName();
             gameBreak(true);
 
-            let randTime = Math.floor(Math.random() * 4000) + 1000;
+            let randTime = Math.floor(Math.random() * 2500) + 500;
             setTimeout(() => {
                 let compCell = computerMove();
                 let circle = createIcon(false);
@@ -68,10 +70,13 @@ function main() {
 
                 gameBreak(false);
 
-                let isCompWin = isWinner(false);
-                if (isCompWin) {
+                let userLost = isWinner(false);
+                if (userLost) {
                     console.log("User LOSE!");
                     gameOver(false);
+                }
+                if (!userLost) {
+                    changeTitleName();
                 }
             }, randTime);
         }
@@ -108,12 +113,12 @@ function main() {
         const [firstCell, secondCell, thirdCell] = switchToNum();
 
         if (isUser) {
-            gameTitle.innerHTML = "YOU WON!";
+            userTitle.innerHTML = "YOU WON!";
             cellButtons[firstCell].classList.add("cell--win");
             cellButtons[secondCell].classList.add("cell--win");
             cellButtons[thirdCell].classList.add("cell--win");
         } else {
-            gameTitle.innerHTML = "YOU LOST...";
+            compTitle.innerHTML = "YOU LOST!";
             cellButtons[firstCell].classList.add("cell--lose");
             cellButtons[secondCell].classList.add("cell--lose");
             cellButtons[thirdCell].classList.add("cell--lose");
@@ -135,6 +140,13 @@ function main() {
                 btn.style.cursor = "pointer";
             }
         }
+    }
+
+    function changeTitleName() {
+        userTitle.classList.toggle("title__user");
+        userTitle.classList.toggle("display__none");
+        compTitle.classList.toggle("display__none");
+        compTitle.classList.toggle("title__comp");
     }
 }
 main();

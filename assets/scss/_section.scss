@@ -13,7 +13,7 @@
     animation: opacity-title 1.7s ease-out 0s 1 normal forwards;
 }
 
-.title {
+.section__title {
     position: relative;
     margin-bottom: 7rem;
     text-align: center;
@@ -27,7 +27,7 @@
 }
 
 
-.title::after {
+.section__title::after {
     content: "Tic Tac Toe";
     position: absolute;
     top: 0;

@@ -14,7 +14,7 @@
 <body>
 	<section class="section">
 
-		<h1 class="title">Tic Tac Toe</h1>
+		<h1 class="section__title">Tic Tac Toe</h1>
 		<button id="start-btn" class="button">Start Game</button>
 
 	</section>
@@ -22,7 +22,10 @@
 	<div class="display__none" id="playground">
 		<section class="section section--board">
 			<div class="game">
-				<h2 class="game__title">YOU</h2>
+				<div class="title">
+					<h2 id="user-name" class="title__user">YOU</h2>
+					<h2 id="bot-name" class="display__none">COMP</h2>
+				</div>
 				<div class="game__board">
 					<button class="cell cell--hover">
 						<span>1</span>

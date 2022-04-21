@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 100%;
+    right: 100%; 
     bottom: 0;
     z-index: 1000;
 
@@ -19,17 +19,21 @@
     justify-content: center;
     align-items: center;
 
-    &__title {
+    .title {
+        display: flex;
+    
         margin-bottom: 1.7em;
-        font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
         font-size: 3em;
         line-height: 38px;
         text-align: center;
-        color: white;
 
-        &--red {
+        &__user {
+            color: white;
+        }
+
+        &__comp {
             color: #C75F5F;
         }
 
