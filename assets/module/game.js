@@ -1,4 +1,10 @@
-export { pushToBoard, isWinner, switchToNum, computerMove, checkPosition };
+export {
+    pushToBoard,
+    isWinner,
+    switchToNum,
+    computerMove,
+    checkPosition
+};
 
 class Transfer {
     constructor(storage) {
@@ -63,17 +69,36 @@ function pushToBoard(move, isUser) {
 }
 
 function computerMove() {
+    let draw = isDraw();
     let compCell;
     let isTaken;
 
-    do {
-        compCell = Math.floor(Math.random() * 9);
-        isTaken = checkPosition(compCell + 1);
-    } while (!isTaken);
-    
-    pushToBoard(compCell + 1, false);
+    if (!draw) {
+        do {
+            compCell = Math.floor(Math.random() * 9);
+            isTaken = checkPosition(compCell + 1);
+        } while (!isTaken);
 
-    return compCell;
+        pushToBoard(compCell + 1, false);
+
+        return compCell;
+    }
+    return null;
+}
+
+function isDraw() {
+    let emptyCells = 0;
+    for (let i = 0; i < gameBoard.length; i++) {
+        for (let j = 0; j < gameBoard.length; j++) {
+            if (gameBoard[i][j] === ' ') {
+                emptyCells++;
+            }
+        }
+    }
+    if (emptyCells !== 0) {
+        return false;
+    }
+    return true;
 }
 
 

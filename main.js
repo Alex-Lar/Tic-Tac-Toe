@@ -13,7 +13,7 @@ function main() {
     let compTitle = document.querySelector("#bot-name");
     let isTaken;
 
-    startGame.addEventListener('click', setGameField); 
+    startGame.addEventListener('click', setGameField);
 
     for (const button of cellButtons) {
         button.addEventListener('click', function () {
@@ -54,31 +54,34 @@ function main() {
         }
 
         if (!isUserWin) {
-            changeTitleName();
-            gameBreak(true);
+            let compCell = computerMove();
+            if (compCell !== null) {
+                gameBreak(true);
+                changeTitleName();
+                let randTime = Math.floor(Math.random() * 2500) + 500;
+                setTimeout(() => {
+                    let circle = createIcon(false);
+                    let btn = cellButtons[compCell];
 
-            let randTime = Math.floor(Math.random() * 2500) + 500;
-            setTimeout(() => {
-                let compCell = computerMove();
-                let circle = createIcon(false);
-                let btn = cellButtons[compCell];
+                    btn.append(circle);
+                    btn.classList.remove("cell--hover");
+                    btn.setAttribute("disabled", "");
+                    btn.style.cursor = "auto";
 
-                btn.append(circle);
-                btn.classList.remove("cell--hover");
-                btn.setAttribute("disabled", "");
-                btn.style.cursor = "auto";
+                    gameBreak(false);
 
-                gameBreak(false);
-
-                let userLost = isWinner(false);
-                if (userLost) {
-                    console.log("User LOSE!");
-                    gameOver(false);
-                }
-                if (!userLost) {
-                    changeTitleName();
-                }
-            }, randTime);
+                    let userLost = isWinner(false);
+                    if (userLost) {
+                        console.log("User LOSE!");
+                        gameOver(false);
+                    }
+                    if (!userLost) {
+                        changeTitleName();
+                    }
+                }, randTime);
+            } else {
+                draw();
+            }
         }
 
 
@@ -107,6 +110,16 @@ function main() {
             btn.style.cursor = "auto";
         }
         colorCells(isUser);
+    }
+
+    function draw() {
+        for (let btn of cellButtons) {
+            btn.classList.remove("cell--hover");
+            btn.setAttribute("disabled", "");
+            btn.style.cursor = "auto";
+        }
+        userTitle.innerHTML = "IT'S A DRAW!";
+
     }
 
     function colorCells(isUser) {
