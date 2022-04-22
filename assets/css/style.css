@@ -584,10 +584,10 @@ body::after {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 8.2em;
+  font-size: 11.5em;
   color: #fff;
-  -webkit-transform: rotate(45deg) translate(-7%, 19%);
-          transform: rotate(45deg) translate(-7%, 19%);
+  -webkit-transform: translate(5%, -3%);
+          transform: translate(5%, -3%);
 }
 
 .icon-circle {

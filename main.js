@@ -9,14 +9,21 @@ import {
 function main() {
     let startGame = document.querySelector("#start-btn");
     let cellButtons = document.querySelectorAll(".cell");
+    let restartBtn = document.querySelector(".game__button");
     let userTitle = document.querySelector("#user-name");
     let compTitle = document.querySelector("#bot-name");
     let isTaken;
 
     startGame.addEventListener('click', setGameField);
 
+    // restartBtn.addEventListener('click', restartGame);
+
+    function restartGame() {
+        
+    }
+
     for (const button of cellButtons) {
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             let userCell = parseInt(this.children[0].innerHTML);
 
             isTaken = checkPosition(userCell);
@@ -95,7 +102,7 @@ function main() {
         icon.classList.add("fi");
 
         if (isUser) {
-            icon.classList.add("fi-rr-plus", "icon-cross");
+            icon.classList.add("fi-rs-cross-small", "icon-cross");
         } else {
             icon.classList.add("fi-rr-circle", "icon-circle");
         }
