@@ -3,7 +3,8 @@ import {
     isWinner,
     switchToNum,
     computerMove,
-    checkPosition
+    checkPosition,
+    clearBoard
 } from './assets/module/game.js';
 
 function main() {
@@ -16,11 +17,7 @@ function main() {
 
     startGame.addEventListener('click', setGameField);
 
-    // restartBtn.addEventListener('click', restartGame);
-
-    function restartGame() {
-        
-    }
+    restartBtn.addEventListener('click', restartGame);
 
     for (const button of cellButtons) {
         button.addEventListener('click', function() {
@@ -116,6 +113,7 @@ function main() {
             btn.setAttribute("disabled", "");
             btn.style.cursor = "auto";
         }
+        
         colorCells(isUser);
     }
 
@@ -143,6 +141,36 @@ function main() {
             cellButtons[secondCell].classList.add("cell--lose");
             cellButtons[thirdCell].classList.add("cell--lose");
         }
+    }
+
+    function restartGame() {
+        let icons = document.querySelectorAll(".fi");
+
+        for (let btn of cellButtons) {
+            btn.classList.remove("cell--win");
+            btn.classList.remove("cell--lose");
+
+            for (let icon of icons) {
+                if (btn.contains(icon)) {
+                    icon.remove();
+                }
+            }
+        }
+
+        for (let btn of cellButtons) {
+            btn.classList.add("cell--hover");
+            btn.removeAttribute("disabled", "");
+            btn.style.cursor = "pointer";
+        }
+
+        userTitle.innerHTML = "YOU";
+        compTitle.innerHTML = "COMP";
+        userTitle.classList.add("title__user");
+        userTitle.classList.remove("display__none");
+        compTitle.classList.add("display__none");
+        compTitle.classList.remove("title__comp");
+
+        clearBoard();
     }
 
     function gameBreak(pause) {

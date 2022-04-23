@@ -3,7 +3,8 @@ export {
     isWinner,
     switchToNum,
     computerMove,
-    checkPosition
+    checkPosition,
+    clearBoard
 };
 
 class Transfer {
@@ -34,6 +35,14 @@ const gameBoard = [
     [' ', ' ', ' '],
     [' ', ' ', ' ']
 ];
+
+function clearBoard() {
+    for (let i = 0; i < gameBoard.length; i++) {
+        for (let j = 0; j < gameBoard.length; j++) {
+            gameBoard[i][j] = ' ';
+        }
+    }
+}
 
 function pushToBoard(move, isUser) {
     let symbol = isUser ? "X" : "O";
