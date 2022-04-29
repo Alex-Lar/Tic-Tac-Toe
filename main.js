@@ -16,7 +16,6 @@ function main() {
     let isTaken;
 
     startGame.addEventListener('click', setGameField);
-
     restartBtn.addEventListener('click', restartGame);
 
     for (const button of cellButtons) {
@@ -76,7 +75,6 @@ function main() {
 
                     let userLost = isWinner(false);
                     if (userLost) {
-                        console.log("User LOSE!");
                         gameOver(false);
                     }
                     if (!userLost) {
@@ -96,12 +94,12 @@ function main() {
 
     function createIcon(isUser) {
         let icon = document.createElement("i");
-        icon.classList.add("fi");
+        // icon.classList.add("fi");
 
         if (isUser) {
-            icon.classList.add("fi-rs-cross-small", "icon-cross");
+            icon.classList.add("fi", "fi-rs-cross", "icon-cross");
         } else {
-            icon.classList.add("fi-rr-circle", "icon-circle");
+            icon.classList.add("fi", "fi-rs-circle", "icon-circle");
         }
 
         return icon;
@@ -113,7 +111,7 @@ function main() {
             btn.setAttribute("disabled", "");
             btn.style.cursor = "auto";
         }
-        
+
         colorCells(isUser);
     }
 
