@@ -10,6 +10,7 @@
   font-weight: 400;
 }
 
+@use "sass:math";
 * {
   padding: 0px;
   margin: 0px;
@@ -579,23 +580,22 @@ body::after {
   border-top: 1px solid #818181;
 }
 
-
 .icon-cross {
   position: absolute;
-  top: 20%;
-  right: 18%;
-  font-size: 7.2em;
+  top: 50%;
+  right: 50%;
+  font-size: 7em;
   color: #fff;
-  -webkit-transform: translate(5%, -3%);
-          transform: translate(5%, -3%);
+  -webkit-transform: translate(50%, -41%);
+          transform: translate(50%, -41%);
 }
 
 .icon-circle {
   position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 7.2em;
+  top: 50%;
+  right: 50%;
+  font-size: 7em;
   color: #C75F5F;
-  -webkit-transform: translate(-22%, 19%);
-          transform: translate(-22%, 19%);
+  -webkit-transform: translate(50%, -41%);
+          transform: translate(50%, -41%);
 }
